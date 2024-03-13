@@ -43,11 +43,46 @@ def welcome_message():
     print("Legend holds that the mansion is filled with powerful artifacts and dark secrets.")
     time.sleep(2)
 
-def choose_path():
-    print("\nDo you wish to explore the grand library to your left or the mysterious atrium straight ahead?")
+def main_hall():
+    clear_screen()
+    print("You're back in the main hall of the mansion. Where would you like to go next?")
     print("1: Grand Library")
     print("2: Mysterious Atrium")
-    return input("> ")
+    print("3: Hidden Garden")
+    choice = input("> ")
+
+    if choice == "1":
+        grand_library()
+    elif choice == "2":
+        mysterious_atrium()
+    elif choice == "3":
+        hidden_garden()
+    else:
+        print("Invalid choice.")
+        main_hall()
+
+def next_action():
+    clear_screen()
+    print("What would you like to do next?")
+    print("1: Return to the mansion's main hall to choose another path")
+    print("2: Check your inventory")
+    print("3: Rest and regain some health")
+    choice = input("> ")
+
+    if choice == "1":
+        main_hall()
+    elif choice == "2":
+        player.show_inventory()
+        input("Press enter to continue...")
+        next_action()
+    elif choice == "3":
+        player.hp = min(100, player.hp + 20)
+        print(f"You rested and regained some health. Current HP: {player.hp}")
+        input("Press enter to continue...")
+        next_action()
+    else:
+        print("Invalid choice. Please choose a valid action.")
+        next_action()
 
 def grand_library():
     clear_screen()
@@ -102,12 +137,14 @@ def hidden_garden():
 
     if choice == "1":
         print("The pond's water has healing properties. You feel rejuvenated.")
-        player.hp = min(100, player.hp + 30)  # Restores HP but doesn't exceed 100
+        player.hp = min(100, player.hp + 30)
         player.check_hp()
     elif choice == "2":
         print("Among the exotic plants, you find a rare herb.")
         player.add_to_inventory({'name': 'Rare Herb', 'type': 'healing', 'effect': 50})
-
+    input("Press enter to continue...")
+    next_action()
+    
 def underground_catacombs():
     clear_screen()
     print("You discover a hidden entrance to the catacombs beneath the mansion. Shadows dance along the walls.")
@@ -242,13 +279,6 @@ def open_atrium_door():
 
 def start_game():
     welcome_message()
-    path = choose_path()
-    if path == "1":
-        grand_library()
-    elif path == "2":
-        mysterious_atrium()
-    else:
-        print("Invalid choice.")
-        start_game()
+    main_hall()
 
 start_game()
