@@ -137,6 +137,53 @@ def mystical_observatory():
         print("A hidden compartment in the wall reveals a magical telescope.")
         player.add_to_inventory({'name': 'Magical Telescope', 'type': 'artifact'})
 
+def secret_passage():
+    clear_screen()
+    print("The ancient inscription leads you to a secret passage hidden behind a movable wall panel.")
+    print("As you traverse the dimly lit corridor, you realize it's leading you deeper into the heart of the mansion.")
+    print("The passage ends at a heavy door carved with symbols that resonate with magical energy.")
+    print("Options:")
+    print("1: Open the door cautiously")
+    print("2: Inspect the symbols before proceeding")
+
+    choice = input("> ")
+
+    if choice == "1":
+        mysterious_chamber()
+    elif choice == "2":
+        print("The symbols tell the tale of the Aetherius, an ancient society that mastered the elemental magics.")
+        print("Realizing the significance of this place, you decide to proceed with caution.")
+        mysterious_chamber()
+    else:
+        print("Invalid choice. Please choose to 'open the door cautiously' or 'inspect the symbols before proceeding'.")
+        secret_passage()
+
+def mysterious_chamber():
+    clear_screen()
+    print("The door creaks open to reveal a chamber, untouched by time. In the center, a pedestal holds an ancient artifact.")
+    print("This must be the Heart of Aetherius, the source of the mansion's boundless magical energy.")
+    print("Options:")
+    print("1: Approach the artifact cautiously")
+    print("2: Examine the room for traps or hidden dangers")
+
+    choice = input("> ")
+
+    if choice == "1":
+        approach_artifact()
+    elif choice == "2":
+        print("Your caution pays off as you notice subtle magical runes on the floor, likely a protective measure.")
+        print("Carefully navigating around them, you make your way to the artifact.")
+        approach_artifact()
+    else:
+        print("Invalid choice. Please choose to 'approach the artifact cautiously' or 'examine the room for traps or hidden dangers'.")
+        mysterious_chamber()
+
+def approach_artifact():
+    clear_screen()
+    print("As you touch the artifact, a surge of energy flows through you. Visions of Aetherius fill your mind, revealing secrets long forgotten.")
+    print("You now hold the power to shape the future of the mansion and its legacy. What will you do with this newfound power?")
+    print("Congratulations! You've reached the end of this adventure. Will you safeguard the mansion's secrets, or seek to uncover more?")
+
 
 def combat():
     print("A spectral guardian appears! Options:")
