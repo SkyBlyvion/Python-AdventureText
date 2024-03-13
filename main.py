@@ -92,6 +92,52 @@ def secret_room():
     player.add_to_inventory({'name': 'Crystal of Power', 'type': 'artifact'})
     explore_mansion()
 
+def hidden_garden():
+    clear_screen()
+    print("The hidden garden is lush and overgrown, with an aura of magic. In the center lies a pond that glimmers with magical energy.")
+    print("Options:")
+    print("1: Investigate the pond")
+    print("2: Explore the surrounding flora")
+    choice = input("> ")
+
+    if choice == "1":
+        print("The pond's water has healing properties. You feel rejuvenated.")
+        player.hp = min(100, player.hp + 30)  # Restores HP but doesn't exceed 100
+        player.check_hp()
+    elif choice == "2":
+        print("Among the exotic plants, you find a rare herb.")
+        player.add_to_inventory({'name': 'Rare Herb', 'type': 'healing', 'effect': 50})
+
+def underground_catacombs():
+    clear_screen()
+    print("You discover a hidden entrance to the catacombs beneath the mansion. Shadows dance along the walls.")
+    print("Options:")
+    print("1: Delve deeper into the catacombs")
+    print("2: Search for inscriptions or artifacts")
+    choice = input("> ")
+
+    if choice == "1":
+        print("You encounter ancient guardians. Prepare for combat.")
+        combat()  # This would be a more challenging combat scenario
+    elif choice == "2":
+        print("You find an ancient inscription that reveals a secret passage.")
+        secret_passage()
+
+def mystical_observatory():
+    clear_screen()
+    print("The observatory is filled with astronomical instruments and ancient tomes on astrology.")
+    print("Options:")
+    print("1: Study the stars for guidance")
+    print("2: Search for hidden mechanisms or doors")
+    choice = input("> ")
+
+    if choice == "1":
+        print("You decipher an astral alignment that points to a hidden artifact within the mansion.")
+    elif choice == "2":
+        print("A hidden compartment in the wall reveals a magical telescope.")
+        player.add_to_inventory({'name': 'Magical Telescope', 'type': 'artifact'})
+
+
 def combat():
     print("A spectral guardian appears! Options:")
     print("1: Fight")
@@ -123,29 +169,29 @@ def combat():
         mysterious_atrium()
 
 def post_combat_scenario():
-    # This function decides what happens next after the guardian combat.
-    print("With the Atrium Key in hand, you now have access to the mysterious stone door in the atrium.")
-    print("Do you wish to open the door, or explore the mansion further?")
-    print("1: Open the door")
-    print("2: Explore the mansion")
+    clear_screen()
+    print("With the spectral guardian defeated, the mansion's secrets lie before you.")
+    print("Where do you wish to explore next?")
+    print("1: The Hidden Garden")
+    print("2: The Underground Catacombs")
+    print("3: The Mystical Observatory")
     choice = input("> ")
+
     if choice == "1":
-        open_atrium_door()
+        hidden_garden()
     elif choice == "2":
-        explore_mansion()
+        underground_catacombs()
+    elif choice == "3":
+        mystical_observatory()
     else:
-        print("Invalid choice.")
+        print("Invalid choice. Please select a valid option.")
         post_combat_scenario()
+
 
 def open_atrium_door():
     clear_screen()
     print("You use the Atrium Key to open the stone door. A gust of cold air greets you as you step into a hidden garden.")
-    # Continue the story from here
 
-def explore_mansion():
-    clear_screen()
-    print("You decide to explore more of the mansion, uncovering its many secrets.")
-    # Provide options for further exploration
 
 def start_game():
     welcome_message()

@@ -1,3 +1,4 @@
+# lore created by chatgpt ( openai )
 print("Welcome to the Eldritch Estate!")
 print("Legend says that this mansion is built atop the ancient ruins of Aetherius, a city with deep magical roots.")
 print("As the last descendant of the Aetherian lineage, the mansion and its secrets now belong to you.")
