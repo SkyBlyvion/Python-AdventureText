@@ -74,7 +74,7 @@ def next_action():
     elif choice == "2":
         player.show_inventory()
         input("Press enter to continue...")
-        next_action()
+        next_action() 
     elif choice == "3":
         player.hp = min(100, player.hp + 20)
         print(f"You rested and regained some health. Current HP: {player.hp}")
@@ -99,7 +99,7 @@ def grand_library():
         player.add_to_inventory({'name': 'Ancient Tome', 'type': 'lore'})
         print("You've uncovered lore about the mansion's ancient curse and its connection to the underworld.")
         time.sleep(2)
-        explore_mansion()
+        next_action()#TODO: modifier le next_action
 
 def mysterious_atrium():
     clear_screen()
@@ -111,10 +111,10 @@ def mysterious_atrium():
 
     if choice == "1":
         print("The runes hint at a key to unlock the door, hidden within the mansion.")
-        explore_mansion()
+        next_action()#TODO: modifier le next_action
     elif choice == "2":
         player.add_to_inventory({'name': 'Potion of Health', 'type': 'healing', 'effect': 20})
-        explore_mansion()
+        next_action()#TODO: modifier le next_action
 
 def explore_mansion():
     clear_screen()
@@ -125,7 +125,7 @@ def secret_room():
     clear_screen()
     print("A hidden room reveals itself, filled with ancient artifacts.")
     player.add_to_inventory({'name': 'Crystal of Power', 'type': 'artifact'})
-    explore_mansion()
+    next_action()#TODO: modifier le next_action
 
 def hidden_garden():
     clear_screen()
@@ -143,8 +143,8 @@ def hidden_garden():
         print("Among the exotic plants, you find a rare herb.")
         player.add_to_inventory({'name': 'Rare Herb', 'type': 'healing', 'effect': 50})
     input("Press enter to continue...")
-    next_action()
-    
+    next_action()#TODO: modifier le next_action
+
 def underground_catacombs():
     clear_screen()
     print("You discover a hidden entrance to the catacombs beneath the mansion. Shadows dance along the walls.")
@@ -155,7 +155,7 @@ def underground_catacombs():
 
     if choice == "1":
         print("You encounter ancient guardians. Prepare for combat.")
-        combat()  # This would be a more challenging combat scenario
+        combat()
     elif choice == "2":
         print("You find an ancient inscription that reveals a secret passage.")
         secret_passage()
@@ -173,6 +173,7 @@ def mystical_observatory():
     elif choice == "2":
         print("A hidden compartment in the wall reveals a magical telescope.")
         player.add_to_inventory({'name': 'Magical Telescope', 'type': 'artifact'})
+    next_action()  # Ensures continuity after exploring the observatory #TODO: modifier le next_action
 
 def secret_passage():
     clear_screen()
@@ -220,7 +221,7 @@ def approach_artifact():
     print("As you touch the artifact, a surge of energy flows through you. Visions of Aetherius fill your mind, revealing secrets long forgotten.")
     print("You now hold the power to shape the future of the mansion and its legacy. What will you do with this newfound power?")
     print("Congratulations! You've reached the end of this adventure. Will you safeguard the mansion's secrets, or seek to uncover more?")
-
+    # This is the end of the game. Player has completed the main adventure.
 
 def combat():
     print("A spectral guardian appears! Options:")
@@ -270,12 +271,6 @@ def post_combat_scenario():
     else:
         print("Invalid choice. Please select a valid option.")
         post_combat_scenario()
-
-
-def open_atrium_door():
-    clear_screen()
-    print("You use the Atrium Key to open the stone door. A gust of cold air greets you as you step into a hidden garden.")
-
 
 def start_game():
     welcome_message()
