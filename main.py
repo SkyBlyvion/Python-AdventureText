@@ -99,7 +99,7 @@ def grand_library():
         player.add_to_inventory({'name': 'Ancient Tome', 'type': 'lore'})
         print("You've uncovered lore about the mansion's ancient curse and its connection to the underworld.")
         time.sleep(2)
-        next_action()#TODO: modifier le next_action
+        next_action()#TODO: modifier le next_action en explore_mansion encounter spectral guardian
 
 def mysterious_atrium():
     clear_screen()
@@ -111,9 +111,12 @@ def mysterious_atrium():
 
     if choice == "1":
         print("The runes hint at a key to unlock the door, hidden within the mansion.")
+        time.sleep(2)
         next_action()#TODO: modifier le next_action
     elif choice == "2":
         player.add_to_inventory({'name': 'Potion of Health', 'type': 'healing', 'effect': 20})
+        print("You find a health potion")
+        time.sleep(2)
         next_action()#TODO: modifier le next_action
 
 def explore_mansion():
