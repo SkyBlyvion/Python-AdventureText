@@ -49,6 +49,7 @@ def main_hall():
     print("1: Grand Library")
     print("2: Mysterious Atrium")
     print("3: Underground Catacombs")
+    print("4: Explore Mansion")
     choice = input("> ")
 
     if choice == "1":
@@ -57,6 +58,8 @@ def main_hall():
         mysterious_atrium()
     elif choice == "3":
         underground_catacombs()
+    elif choice == "4":
+        explore_mansion()
     else:
         print("Invalid choice.")
         main_hall()
@@ -260,17 +263,16 @@ def post_combat_scenario():
     clear_screen()
     print("With the spectral guardian defeated, the mansion's secrets lie before you.")
     print("Where do you wish to explore next?")
-    print("1: The Hidden Garden")
-    print("2: The Underground Catacombs")
-    print("3: The Mystical Observatory")
+    print("1: The Underground Catacombs")
+    print("2: The Mystical Observatory")
     choice = input("> ")
 
     if choice == "1":
-        hidden_garden()
-    elif choice == "2":
         underground_catacombs()
-    elif choice == "3":
+    elif choice == "2":
         mystical_observatory()
+    elif choice == "3":
+        main_hall()
     else:
         print("Invalid choice. Please select a valid option.")
         post_combat_scenario()
