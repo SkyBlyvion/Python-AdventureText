@@ -48,7 +48,7 @@ def main_hall():
     print("You're back in the main hall of the mansion. Where would you like to go next?")
     print("1: Grand Library")
     print("2: Mysterious Atrium")
-    print("3: Hidden Garden")
+    print("3: Underground Catacombs")
     choice = input("> ")
 
     if choice == "1":
@@ -56,7 +56,7 @@ def main_hall():
     elif choice == "2":
         mysterious_atrium()
     elif choice == "3":
-        hidden_garden()
+        underground_catacombs()
     else:
         print("Invalid choice.")
         main_hall()
@@ -130,7 +130,7 @@ def secret_room():
     player.add_to_inventory({'name': 'Crystal of Power', 'type': 'artifact'})
     next_action()#TODO: modifier le next_action
 
-def hidden_garden():
+def hidden_garden(): # post combat
     clear_screen()
     print("The hidden garden is lush and overgrown, with an aura of magic. In the center lies a pond that glimmers with magical energy.")
     print("Options:")
@@ -148,7 +148,7 @@ def hidden_garden():
     input("Press enter to continue...")
     next_action()#TODO: modifier le next_action
 
-def underground_catacombs():
+def underground_catacombs(): 
     clear_screen()
     print("You discover a hidden entrance to the catacombs beneath the mansion. Shadows dance along the walls.")
     print("Options:")
