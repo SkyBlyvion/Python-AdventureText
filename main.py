@@ -41,8 +41,10 @@ def welcome_message():
     clear_screen()
     print("Welcome to the Eldritch Estate, built atop the ancient ruins of Aetherius.")
     print("Legend holds that the mansion is filled with powerful artifacts and dark secrets.")
-    time.sleep(2)
+    time.sleep(3)
 
+#Main entrance
+#You can go to Grand Library, Mysterious Atrium, Underground Catacombs, or Explore Mansion
 def main_hall():
     clear_screen()
     print("You're back in the main hall of the mansion. Where would you like to go next?")
@@ -98,15 +100,18 @@ def grand_library():
     if choice == "1":
         player.add_to_inventory({'name': 'Magical Orb', 'type': 'artifact'})
         print("You've uncovered a new artifact, the Magical Orb")
-        print("As you carefully unearth the artifact, the wall before you begins to open, as if by magic. You uncovered a secret room")
-        time.sleep(6)
+        print("As you carefully take the artifact, the wall before you begins to open, as if by magic. You uncovered a secret room")
+        input("Press Enter to continue...")
         secret_room()
     elif choice == "2":
         player.add_to_inventory({'name': 'Ancient Tome', 'type': 'lore'})
         print("You've uncovered lore about the mansion's ancient curse and its connection to the underworld.")
-        time.sleep(2)
-        print("Closed path, you need to ")
-        next_action()#TODO: modifier le next_action en explore_mansion encounter spectral guardian
+        print("As you read the ancient tome, you feel a sense of peace and calm. You found a note stamped with the phrase 'The door '")
+        print("you decide to go back to the main hall")
+        input("Press Enter to continue...")
+        main_hall()
+        
+
 
 def mysterious_atrium():
     clear_screen()
@@ -133,9 +138,12 @@ def explore_mansion():
 
 def secret_room():
     clear_screen()
-    print("A hidden room reveals itself, filled with ancient artifacts.")
+    print("A hidden room reveals itself, filled with an ancient artifacts.")
     player.add_to_inventory({'name': 'Crystal of Power', 'type': 'artifact'})
-    next_action()#TODO: modifier le next_action
+    print("You've uncovered a new artifact, the Crystal of Power.")
+    print("Upon taking the artifact, unaware of the events that unfolded, you find yourself back in the main hall.")
+    input("Press Enter to continue...")
+    main_hall()
 
 def hidden_garden(): # post combat
     clear_screen()
@@ -175,23 +183,23 @@ def mystical_observatory():
     print("The observatory is filled with astronomical instruments and ancient tomes on astrology.")
     print("Options:")
     print("1: Study the stars for guidance")
-    print("2: Search for hidden mechanisms or doors")
+    print("2: Search for the key hint by the book in the grand library")
     choice = input("> ")
 
     if choice == "1":
         print("You decipher an astral alignment that points to a hidden artifact within the mansion.")
     elif choice == "2":
-        print("A hidden compartment in the wall reveals a magical telescope.")
-        player.add_to_inventory({'name': 'Magical Telescope', 'type': 'artifact'})
+        print("A hidden compartment in the wall reveals the key to the .")
+        player.add_to_inventory({'name': 'Atrium Key', 'type': 'key'})
     next_action()  # Ensures continuity after exploring the observatory #TODO: modifier le next_action
 
 def secret_passage():
     clear_screen()
     print("The ancient inscription leads you to a secret passage hidden behind a movable wall panel.")
     print("As you traverse the dimly lit corridor, you realize it's leading you deeper into the heart of the mansion.")
-    print("The passage ends at a heavy door carved with symbols that resonate with magical energy.")
+    print("The passage ends at a heavy door carved with symbols that resonate with magical energy. As you remember reading in the grand library, that door unravel the secrets of the Aetherius.")
     print("Options:")
-    print("1: Open the door cautiously")
+    print("1: Open the door with the Atrium Key you find in the mystical observatory") # key found in mystical observatory
     print("2: Inspect the symbols before proceeding")
 
     choice = input("> ")
@@ -245,8 +253,8 @@ def combat():
         player.hp -= 30
         player.check_hp()
         if player.hp > 0:
-            print("Defeated the guardian and found a key to the mysterious atrium door.")
-            player.add_to_inventory({'name': 'Atrium Key', 'type': 'key'})
+            print("Defeated the guardian. You continue exploring the mansion.")
+            
             post_combat_scenario()  # Continue the game after combat
         else:
             print("You have been defeated. Game Over.")
