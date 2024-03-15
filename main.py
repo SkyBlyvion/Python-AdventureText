@@ -97,11 +97,15 @@ def grand_library():
 
     if choice == "1":
         player.add_to_inventory({'name': 'Magical Orb', 'type': 'artifact'})
+        print("You've uncovered a new artifact, the Magical Orb")
+        print("As you carefully unearth the artifact, the wall before you begins to open, as if by magic. You uncovered a secret room")
+        time.sleep(6)
         secret_room()
     elif choice == "2":
         player.add_to_inventory({'name': 'Ancient Tome', 'type': 'lore'})
         print("You've uncovered lore about the mansion's ancient curse and its connection to the underworld.")
         time.sleep(2)
+        print("Closed path, you need to ")
         next_action()#TODO: modifier le next_action en explore_mansion encounter spectral guardian
 
 def mysterious_atrium():
