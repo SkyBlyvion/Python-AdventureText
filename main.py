@@ -66,6 +66,26 @@ def main_hall():
         print("Invalid choice.")
         main_hall()
 
+#Second grand library
+def main_halle():
+    clear_screen()
+    print("You're back in the main hall of the mansion. Where would you like to go next?")
+    print("1: Mysterious Atrium")
+    print("2: Underground Catacombs")
+    print("3: Explore Mansion")
+    choice = input("> ")
+
+    if choice == "1":
+        mysterious_atrium()
+    elif choice == "2":
+        underground_catacombs()
+    elif choice == "3":
+        explore_mansion()
+    else:
+        print("Invalid choice.")
+        main_halle()
+
+
 def next_action():
     clear_screen()
     print("What would you like to do next?")
@@ -107,9 +127,25 @@ def grand_library():
         player.add_to_inventory({'name': 'Ancient Tome', 'type': 'lore'})
         print("You've uncovered lore about the mansion's ancient curse and its connection to the underworld.")
         print("As you read the ancient tome, you feel a sense of peace and calm. You found a note stamped with the phrase 'The door '")
-        print("you decide to go back to the main hall")
+        print("you decide to go back to the grand library")
         input("Press Enter to continue...")
-        main_hall()
+        grand_librar()
+
+def grand_librar():
+    clear_screen()
+    print("You're back in the grand library.")
+    print("1: Investigate the glow")
+    choice = input("> ")
+
+    if choice == "1":
+        player.add_to_inventory({'name': 'Magical Orb', 'type': 'artifact'})
+        print("You've uncovered a new artifact, the Magical Orb")
+        print("As you carefully take the artifact, the wall before you begins to open, as if by magic. You uncovered a secret room")
+        input("Press Enter to continue...")
+        secret_room()
+    else:
+        print("Invalid choice. Please choose a valid action.")
+        grand_librar()
         
 
 
@@ -144,6 +180,7 @@ def secret_room():
     print("Upon taking the artifact, unaware of the events that unfolded, you find yourself back in the main hall.")
     input("Press Enter to continue...")
     main_hall()
+
 
 def hidden_garden(): # post combat
     clear_screen()
@@ -188,27 +225,34 @@ def mystical_observatory():
 
     if choice == "1":
         print("You decipher an astral alignment that points to a hidden artifact within the mansion.")
+        print("You go back to the mystical observatory and continue exploring.")
+        mystical_observatory()
     elif choice == "2":
         print("A hidden compartment in the wall reveals the key to the .")
         player.add_to_inventory({'name': 'Atrium Key', 'type': 'key'})
     next_action()  # Ensures continuity after exploring the observatory #TODO: modifier le next_action
-
+        
 def secret_passage():
     clear_screen()
     print("The ancient inscription leads you to a secret passage hidden behind a movable wall panel.")
     print("As you traverse the dimly lit corridor, you realize it's leading you deeper into the heart of the mansion.")
-    print("The passage ends at a heavy door carved with symbols that resonate with magical energy. As you remember reading in the grand library, that door unravel the secrets of the Aetherius.")
+    print("The passage ends at a heavy door carved with symbols that resonate with magical energy.")
+    print("As you remember reading in the grand library, that door could unravel the secrets of the Aetherius.")
     print("Options:")
-    print("1: Open the door with the Atrium Key you find in the mystical observatory") # key found in mystical observatory
+    print("1: Open the door with the Atrium Key found in the mystical observatory")
     print("2: Inspect the symbols before proceeding")
 
     choice = input("> ")
 
     if choice == "1":
-        mysterious_chamber()
+        if any(item['name'] == 'Atrium Key' for item in player.inventory):  # Assuming player.inventory is a list of items
+            mysterious_chamber()
+        else:
+            print("The door is locked. You need the Atrium Key from the mystical observatory to open it.")
     elif choice == "2":
         print("The symbols tell the tale of the Aetherius, an ancient society that mastered the elemental magics.")
         print("Realizing the significance of this place, you decide to proceed with caution.")
+        input("Press Enter to continue...")  # Added to give players a moment before proceeding
         mysterious_chamber()
     else:
         print("Invalid choice. Please choose to 'open the door cautiously' or 'inspect the symbols before proceeding'.")
